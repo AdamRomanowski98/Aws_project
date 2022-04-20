@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+    
+</body>
+
+
+<script>
+    let connection = new WebSocket("wss://2p3siz4ef9.execute-api.us-east-1.amazonaws.com/prod");
+
+    
+let coins = [];
+let tweets = [];
+
+
+connection.onopen = function (event) {
+    console.log("Connected: " + JSON.stringify(event));
+    getCurrencyData();
+    
+};
+
+
+connection.onmessage = function (msg) {
+
+    let data = msg.data;
+    let json = JSON.parse(data);
+
+for (let i = 0; i < 6; i++) {
+   coins.push(JSON.parse(msg.data)[i].body.Items);
+}
+
+
+}
+
+
+//Log errors
+connection.onerror = function (error) {
+    console.log("WebSocket Error: " + JSON.stringify(error));
+}
+
+//Send message to server
+function getCurrencyData() {
+
+    //Create message to be sent to server
+    var msgObject = {
+        action: "getCurrencyData",
+        data: "getCurrencyData"
+    };
+    //Send message object
+    connection.send(JSON.stringify(msgObject));
+    console.log(JSON.stringify(msgObject));
+    //Log result
+    console.log("Message sent: " + JSON.stringify(msgObject));
+}
+console.log(coins);
+
+</script>
+</html>

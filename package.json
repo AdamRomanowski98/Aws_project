@@ -1,0 +1,22 @@
+{
+  "name": "data-visualization",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.1101.0",
+    "axios": "^0.26.1",
+    "dotenv": "^16.0.0",
+    "moment": "^2.29.1",
+    "nodemon": "^2.0.15",
+    "twitter": "^1.7.1"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.23"
+  }
+}
